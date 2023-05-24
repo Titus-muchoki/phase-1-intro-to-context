@@ -38,3 +38,13 @@ function createTimeOutEvent(employee, dateStamp){
     })
     return employee;
 }
+
+function hoursWorkedOnDate(employee, soughtDate){
+    let inEvent = employee.timeInEvents.find(function(e){
+        e.date === soughtDate;
+    })
+    let outEvent = employee.timeOutEvents.find(function(e){
+        e.date === soughtDate;
+    })
+    return(outEvent.hour - inEvent.hour)/100;
+}
