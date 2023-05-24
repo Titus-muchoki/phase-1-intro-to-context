@@ -10,3 +10,31 @@ timeOutEvents: []
     }
     return obj;
 }
+
+function createEmployeeRecords(twoRows){
+    let anArray = [];
+    twoRows.array.forEach(element => {
+        anArray.push(createEmployeeRecords(element))
+    });
+    return anArray;
+}
+
+function createTimeInEvent(employee, dateStamp){
+   let [date, hour] = dateStamp.split("");
+   employee.timeInEvents.push({
+    type: 'timeIn',
+    hour: parseInt(hour, 10),
+    date,
+   })
+   return employee;
+}
+
+function createTimeOutEvent(employee, dateStamp){
+    let [date, hour] = dateStamp.split("");
+    employee.createTimeOutEvent.push({
+        type: 'timeOut',
+        hour: parseInt(hour, 10),
+        date,
+    })
+    return employee;
+}
